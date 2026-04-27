@@ -1,0 +1,38 @@
+server:
+    port: 8081
+
+spring:
+    application:
+        name: user-service
+    datasource:
+        url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/flight_db?createDatabaseIfNotExist=true}
+        username: ${SPRING_DATASOURCE_USERNAME:root}
+        password: "{cipher}fa6634a1e4879094a67693336a048adb6ac5a121f0dcda44f7a771b87c0292bf"
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQL8Dialect
+
+    data:
+        redis:
+            host: ${REDIS_HOST:localhost}
+            port: ${REDIS_PORT:6379}
+
+
+jwt:
+    secret: "{cipher}6ff282123e7accf7d6e4f146de4c6e52b6bb2fff1bbb1b4f94b7583574d9907d439cae064100324c85d7c8f686c688333df0b2842e96507134c7a5cac1fbbe8e8b92800c83988a089b46a09bc60ad67c1efecff5f4f68d3d761cb2ebc1d0d3b4"
+    expiration: 900000 # 15 minutes in ms
+    refreshExpiration: 86400000 # 24 hours in ms
+
+app:
+    admin:
+        username: ${ADMIN_USERNAME:admin}
+        email: ${ADMIN_EMAIL:admin@flightapp.com}
+        password: "{cipher}e8b0fdb5fbed6d2aaa4631c4189289e536adf1986a257bbbdec31f66687996ee"
+    auth:
+        password-regex: "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$"
+        password-message: "Password must be at least 8 characters long, contain at least one digit, one lowercase letter, one uppercase letter, and one special character."
