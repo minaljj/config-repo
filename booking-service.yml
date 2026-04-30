@@ -24,6 +24,23 @@ spring:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
 
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:127.0.0.1:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.type.mapping: seatUpdate:com.flightapp.booking_service.dto.SeatUpdateRequest
+    consumer:
+      group-id: flight-app-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "*"
+        spring.json.type.mapping: seatUpdate:com.flightapp.booking_service.dto.SeatUpdateRequest
+
+
 jwt:
   secret: "{cipher}3dedc91740d3efa4dcb61374fd007d56456f771323ae106191e096eec2b341577c3d407b6a4acced99d9248b37348d782ee5f5e176376d85a90d8711f01ff4f9dc900cb4a4426f5b6c9d8f7bff918cccfad221d8588fc70754167cfabfbeeac1"
 
@@ -62,3 +79,5 @@ external:
 
 security:
   enabled: true
+
+
