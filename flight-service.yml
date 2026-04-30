@@ -1,1 +1,22 @@
+server:
+  port: 8083
 
+spring:
+  application:
+    name: flight-service
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/flight_db}
+    username: ${SPRING_DATASOURCE_USERNAME:root}
+    password: "{cipher}3a83bab1aae9733123ebca71a7a29b849baa65554f21f99747f5d1a953a87041"
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+jwt:
+  secret: "{cipher}136d5ce1279f878a999cfcb1ce40a209a1699e2b4aa8a0471dab5e0f85613ee55e6ce2e4339d2f6f18a9b598401354ea369e0b9884f39cbf9e5536c4e7c2e97034ddaeebd861db138a5c2311e29363f849ef8bf0c0c2131eafc83736c3fa9199"
+debug: true	
