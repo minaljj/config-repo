@@ -1,0 +1,15 @@
+server:
+  port: 8086
+
+kafka:
+  broker: ${KAFKA_BROKER:localhost:9092}
+
+app:
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
+
+email:
+  service: ${EMAIL_SERVICE:gmail}
+  host: ${EMAIL_HOST:smtp.gmail.com}
+  port: ${EMAIL_PORT:587}
+  user: "{cipher}9f86983a716cdbb7807c90cf187c95a1b3dc0424d38bfa82cd131ee0dbc38e737ee10b6a1b47af356aff79ca0252a05d"
+  pass: "{cipher}24cb739a0c010affd2a65d81db45d35c5873a0e89cac4706eb74ae1280d926ab6520a4d753f1a46a4e8268566f5240b6"
