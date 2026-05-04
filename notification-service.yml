@@ -2,7 +2,7 @@ server:
   port: 8086
 
 kafka:
-  broker: ${KAFKA_BROKER:localhost:9092}
+  broker: ${KAFKA_BROKER:127.0.0.1:9092}
 
 app:
   frontend-url: ${FRONTEND_URL:http://localhost:5173}
